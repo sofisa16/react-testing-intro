@@ -1,20 +1,30 @@
 import React, {useState} from 'react';
 import './App.css';
+import Display from './Display';
+
+// Exporting components and functions from the file for the sake of testing them.
+export const increment = (prevCounter) => {
+  return prevCounter + 1;
+}
+
+export const decrement = (prevCounter) => {
+  return prevCounter - 1;
+}
 
 function App() {
   let [counter, setCounter] = useState(0);
   
-  function increment() {
+  function doIncrement() {
     setCounter(
       (prevCounter) => {
-        return prevCounter + 1;
+        return increment(prevCounter);
       }
     );
   }
-  function decrement() {
+  function doDecrement() {
     setCounter(
       (prevCounter) => {
-        return prevCounter - 1;
+        return decrement(prevCounter);
       }
     );
   }
@@ -22,16 +32,18 @@ function App() {
   return (
     <div>
       <h1>My Counter</h1>
-      <p>{counter}</p>
+      
+      <Display text={counter}/>
+      
       <button
         type="button"
-        onClick={increment}
+        onClick={doIncrement}
       >
         Increment
       </button>
       <button
         type="button"
-        onClick={decrement}
+        onClick={doDecrement}
       >
         Decrement
       </button>
