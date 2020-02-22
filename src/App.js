@@ -33,7 +33,7 @@ function App() {
     <div>
       <h1>My Counter</h1>
       
-      <Display text={counter}/>
+      <Display data={counter}/>
       
       <button
         type="button"
